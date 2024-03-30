@@ -4,7 +4,6 @@
 
 - [Slurm and Computing Clusters](#slurm-and-computing-clusters)
   - [Table of contents](#table-of-contents)
-  - [Using this document](#using-this-document)
   - [Introduction](#introduction)
   - [Part I: Prerequisites](#part-i-prerequisites)
   - [Part II: Configure OpenSSH](#part-ii-configure-openssh)
@@ -30,10 +29,6 @@
   - [Appendix](#appendix)
     - [WSL](#wsl)
   - [Acknowledgements](#acknowledgements)
-
-## Using this document
-
-If you encounter issues, check the [Troubleshooting](#troubleshooting) section.
 
 ## Introduction
 
