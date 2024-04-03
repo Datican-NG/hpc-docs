@@ -69,9 +69,10 @@ If you are using Windows 10 or 11, you can use OpenSSH like Mac and Linux users.
 4. Verify the key was added with `ssh-add -l`.
 
 ### Step 3: Enable SSH key authentication on the cluster
+1. In Command Prompt (windows) or terminal (Mac/Linux) on your local machine, run `ssh YOUR-CNET-ID@randi.cri.uchicago.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh"`
 
 #### For Mac/Linux:
-1. Run `ssh-copy-id -i ~/.ssh/KEYNAME.pub randi.cri.uchicago.edu` to copy your public key to the cluster. Enter your CNET password when prompted.
+1. From your local machine, run `ssh-copy-id -i ~/.ssh/KEYNAME.pub randi.cri.uchicago.edu` to copy your public key to the cluster. Enter your CNET password when prompted.
 2. Verify by running `ssh randi.cri.uchicago.edu`. You should connect without a password.
 
 #### For Windows:
