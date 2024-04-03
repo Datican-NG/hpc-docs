@@ -49,7 +49,7 @@ This guide is tailored to the University of Chicago's `randi` cluster but should
 - An internet connection
 - VSCode
 - A GitHub account
-- UChicago VPN enabled (follow instructions [here](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000719))
+- UChicago VPN enabled (follow instructions [here](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000719) for Windows and [here](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000725) for MacOS)
  
 ## Part II: 
 
@@ -106,7 +106,7 @@ Host cri22cn*
 ```
 
 ## Part III: Connecting to the cluster
-Any time you connect to the cluster, you need to have the UChicago VPN enabled (follow instructions [here](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000719)). 
+Any time you connect to the cluster, you need to have the UChicago VPN enabled (follow instructions [here](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000719) for Windows and [here](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000725) for MacOS)
 
 ### Step I: The cluster
 
