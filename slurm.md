@@ -129,7 +129,7 @@ When you want to run an intensive job, use a compute node. These are powerful co
     - `-p` or partition. Use `gpuq` for interactive jobs with GPUs. 
     - `--gres` for gpus (e.g., `--gres=gpu:1` for a single gpu).
     - `--pty` to attach in a pseudoterminal.
-4. Run `srun -p gpuq -t 640:00 --cpus-per-task 4 --pty /bin/bash` to request a compute node. 
+4. Run `srun -p gpuq -t 640:00 --cpus-per-task 4 --gres=gpu:1 --pty /bin/bash` to request a compute node. 
 5. Your terminal is now connected to the compute node. Type `exit` to end your job or run `scancel JOB_ID` to cancel it.
 
 ## Part IV: Set up VSCode
