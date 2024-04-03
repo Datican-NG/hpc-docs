@@ -63,7 +63,7 @@ If you are using Windows 10 or 11, you can use OpenSSH like Mac and Linux users.
 
 ### Step 2: Create SSH keys
 
-1. In your local terminal (or Command Prompt on Windows), run `ssh-keygen -t ed25519` to generate an SSH key pair. Do not set a password when prompted. 
+1. In your local terminal (or Command Prompt on Windows), run `ssh-keygen -t ed25519` to generate an SSH key pair. Press enter to use the default suggested location for storing the keys. Press enter when prompted for an optional password (this skips adding a password-- the key is already secure without one). 
 2. Two files will be created: `KEYNAME` (private key) and `KEYNAME.pub` (public key). Never share your private key.
 3. Add the private key to ssh-agent with `ssh-add PATH_TO_KEYNAME`.
 4. Verify the key was added with `ssh-add -l`.
@@ -71,7 +71,7 @@ If you are using Windows 10 or 11, you can use OpenSSH like Mac and Linux users.
 ### Step 3: Enable SSH key authentication on the cluster
 
 #### For Mac/Linux:
-1. Run `ssh-copy-id -i ~/.ssh/KEYNAME.pub randi` to copy your public key to the cluster. Enter your CNET password when prompted.
+1. Run `ssh-copy-id -i ~/.ssh/KEYNAME.pub randi.cri.uchicago.edu` to copy your public key to the cluster. Enter your CNET password when prompted.
 2. Verify by running `ssh randi.cri.uchicago.edu`. You should connect without a password.
 
 #### For Windows:
