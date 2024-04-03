@@ -142,26 +142,7 @@ VSCode is a code editor with useful extensions. `Remote - SSH` allows you to ope
 
 1. Install the `Remote - SSH` extension in VSCode.
 
-2. (optional but strongly recommended) Add useful extensions to always be installed in remote connections. Open the command palette (ctrl+shift+p / command+shift+p / View -> Command Palette...) and search for `Open User Settings`. If it is empty, paste:
-```
-{
-    "remote.SSH.defaultExtensions": [
-        "ms-toolsai.jupyter",
-        "ms-toolsai.jupyter-renderers",
-        "ms-python.python",
-        "ms-python.vscode-pylance"
-    ]
-}
-```
-otherwise, make sure to add a comma to the end of the current last item and add the following before the `}`:
-```
-    "remote.SSH.defaultExtensions": [
-        "ms-toolsai.jupyter",
-        "ms-toolsai.jupyter-renderers",
-        "ms-python.python",
-        "ms-python.vscode-pylance"
-    ]
-```
+2. (optional but strongly recommended) Add useful extensions to always be installed in remote connections. Click the gear icon in the bottom left hand corner of VSCode and select "settings". In the search bar, search for "Remote default extension." In the window that pops up, add the following items: "ms-toolsai.jupyter", "ms-toolsai.jupyter-renderers", "ms-python.python", "ms-python.vscode-pylance".
 
 ### Step 2: Connect to the login node with VSCode
 
