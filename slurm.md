@@ -9,7 +9,8 @@
   - [Part II:](#part-ii)
     - [Step I: Enable OpenSSH (Windows users only)](#step-i-enable-openssh-windows-users-only)
     - [Step 2: Create SSH keys](#step-2-create-ssh-keys)
-    - [Step 3: Enable SSH key authentication on the cluster](#step-3-enable-ssh-key-authentication-on-the-cluster)
+    - [Step 3: Enable SSH Key Authentication on the Cluster](#step-3-enable-ssh-key-authentication-on-the-cluster)
+      - [Common Steps:](#common-steps)
       - [For Mac/Linux:](#for-maclinux)
       - [For Windows:](#for-windows)
     - [Step 4: Configure SSH](#step-4-configure-ssh)
@@ -19,7 +20,7 @@
   - [Part IV: Set up VSCode](#part-iv-set-up-vscode)
     - [Step 1: Prerequisites](#step-1-prerequisites)
     - [Step 2: Connect to the login node with VSCode](#step-2-connect-to-the-login-node-with-vscode)
-    - [Step 3: Connect to a compute node with VSCode](#step-3-connect-to-a-compute-node-with-vscode)
+    - [Step 3: Connect to a compute node with VSCode (only necessary for running Jupyter notebooks)](#step-3-connect-to-a-compute-node-with-vscode-only-necessary-for-running-jupyter-notebooks)
   - [Part V: Enable SSH keys for GitHub (optional, but strongly recommended)](#part-v-enable-ssh-keys-for-github-optional-but-strongly-recommended)
     - [Step 1:](#step-1)
     - [Step 2:](#step-2)
@@ -68,20 +69,27 @@ If you are using Windows 10 or 11, you can use OpenSSH like Mac and Linux users.
 3. Add the private key to ssh-agent with `ssh-add PATH_TO_KEYNAME`.
 4. Verify the key was added with `ssh-add -l`.
 
-### Step 3: Enable SSH key authentication on the cluster
-1. In Command Prompt (windows) or terminal (Mac/Linux) on your local machine, run `ssh YOUR-CNET-ID@randi.cri.uchicago.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh"`
+### Step 3: Enable SSH Key Authentication on the Cluster
+
+#### Common Steps:
+1. On your local machine, open Command Prompt (Windows) or Terminal (Mac/Linux).
+2. Run `ssh YOUR-CNET-ID@randi.cri.uchicago.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh"` to create a `.ssh` directory on the cluster with the correct permissions.
 
 #### For Mac/Linux:
-1. From your local machine, run `ssh-copy-id -i ~/.ssh/KEYNAME.pub randi.cri.uchicago.edu` to copy your public key to the cluster. Enter your CNET password when prompted.
-2. Verify by running `ssh randi.cri.uchicago.edu`. You should connect without a password.
+1. Copy your public key to the cluster by running `ssh-copy-id -i ~/.ssh/KEYNAME.pub randi.cri.uchicago.edu`. Replace `KEYNAME` with the actual name of your key file. Enter your CNET password when prompted.
+2. Test the setup by running `ssh randi.cri.uchicago.edu`. You should be able to connect without entering a password.
 
 #### For Windows:
-1. Print your public key: on your local machine, in Command Prompt, run `type C:\Users\USERNAME\.ssh\KEYNAME.pub`
-1. Connect to the cluster with `ssh randi.cri.uchicago.edu` and enter your CNET password. 
-2. Run `mkdir .ssh` to ensure the `.ssh` directory exists.
-3. Add your public key to authorized keys with `echo "PUBLIC_KEY_HERE" >> .ssh/authorized_keys` (maintain the quotes).
-4. Type `exit` to disconnect from the cluster.
-5. Verify by running `ssh randi.cri.uchicago.edu`. You should connect without a password.
+1. Print your public key to the console by running `type C:\Users\USERNAME\.ssh\KEYNAME.pub` in Command Prompt. Replace `USERNAME` with your Windows username and `KEYNAME` with the actual name of your key file.
+2. Select and copy the entire output, which is your public key.
+3. Connect to the cluster using `ssh YOUR-CNET-ID@randi.cri.uchicago.edu` and enter your CNET password.
+4. Run `echo "PASTE-YOUR-PUBLIC-KEY-CONTENT-HERE" >> ~/.ssh/authorized_keys` to add your public key to the `authorized_keys` file on the cluster. Replace `PASTE-YOUR-PUBLIC-KEY-CONTENT-HERE` with the public key you copied earlier.
+5. Type `exit` to log out from the cluster.
+6. Test the setup by running `ssh YOUR-CNET-ID@randi.cri.uchicago.edu`. You should now connect without entering a password.
+
+Remember to replace placeholders like `YOUR-CNET-ID`, `USERNAME`, and `KEYNAME` with your actual user ID, username, and key file name, respectively.
+
+**Note**: The public key content should be a single continuous line of text starting with 'ssh-rsa' or similar. Ensure no line breaks are introduced when copying and pasting the key.
 
 
 ### Step 4: Configure SSH
@@ -149,7 +157,7 @@ VSCode is a code editor with useful extensions. `Remote - SSH` allows you to ope
 1. Click the green box in the lower left corner of VSCode. This opens the command palette. Select `Connect to Host`. Select `randi`.
 2. Once connected, you can open your project folder and use VSCode normally. The bottom-left corner green box will show `SSH: randi` to indicate you are connected.
 
-### Step 3: Connect to a compute node with VSCode
+### Step 3: Connect to a compute node with VSCode (only necessary for running Jupyter notebooks)
 VSCode will automatically run Jupyter notebooks for you when you open them for editing. If you are doing any heavy computation in a Jupyter notebook, connect your entire VSCode session to a compute node as follows.
 
 1. In a terminal (Mac/Linux) or Command Prompt (Windows), `ssh randi` to connect to the cluster login node. 
