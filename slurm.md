@@ -9,6 +9,7 @@
   - [Part II:](#part-ii)
     - [Step I: Enable OpenSSH (Windows users only)](#step-i-enable-openssh-windows-users-only)
     - [Step 2: Create SSH keys](#step-2-create-ssh-keys)
+    - [Step 2: Create SSH keys](#step-2-create-ssh-keys-1)
     - [Step 3: Enable SSH Key Authentication on the Cluster](#step-3-enable-ssh-key-authentication-on-the-cluster)
       - [Common Steps:](#common-steps)
       - [For Mac/Linux:](#for-maclinux)
@@ -62,6 +63,25 @@ If you are using Windows 10 or 11, you can use OpenSSH like Mac and Linux users.
 3. Open Command Prompt and type `where ssh` to confirm that the top listed path is in System32. Mine is installed at `C:\Windows\System32\OpenSSH\ssh.exe`. If it's not in the list you may need to close and reopen Command Prompt.
 4. Verify `ssh` command works in Command Prompt.
 
+### Step 2: Create SSH keys
+
+1. In your local terminal (or Command Prompt on Windows), run `ssh-keygen -t ed25519` to generate an SSH key pair. Press enter to use the default suggested location for storing the keys. Press enter when prompted for an optional password (this skips adding a password-- the key is already secure without one).
+
+2. Two files will be created: `KEYNAME` (private key) and `KEYNAME.pub` (public key). Never share your private key.
+
+3. **For Mac/Linux:**
+  In Terminal, execute `eval $(ssh-agent -s)`.
+
+  **For Windows:**
+  In Command Prompt, execute the following commands:
+```bash
+Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
+```
+4. Add the private key to ssh-agent with `ssh-add PATH_TO_KEYNAME`.
+
+5. Verify the key was added with `ssh-add -l`.
+ 
 ### Step 2: Create SSH keys
 
 1. In your local terminal (or Command Prompt on Windows), run `ssh-keygen -t ed25519` to generate an SSH key pair. Press enter to use the default suggested location for storing the keys. Press enter when prompted for an optional password (this skips adding a password-- the key is already secure without one). 
