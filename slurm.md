@@ -74,6 +74,7 @@ If you are using Windows 10 or 11, you can use OpenSSH like Mac and Linux users.
 #### Common Steps:
 1. On your local machine, open Command Prompt (Windows) or Terminal (Mac/Linux).
 2. Run `ssh YOUR-CNET-ID@randi.cri.uchicago.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh"` to create a `.ssh` directory on the cluster with the correct permissions.
+3. In Command Prompt (Windows) or Terminal (Mac/Linux), execute `eval $(ssh-agent -s)`.
 
 #### For Mac/Linux:
 1. Copy your public key to the cluster by running `ssh-copy-id -i ~/.ssh/KEYNAME.pub randi.cri.uchicago.edu`. Replace `KEYNAME` with the actual name of your key file. Enter your CNET password when prompted.
