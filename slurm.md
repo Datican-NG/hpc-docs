@@ -84,7 +84,7 @@ If you are using Windows 10 or 11, you can use OpenSSH like Mac and Linux users.
 1. Print your public key to the console by running `type C:\Users\USERNAME\.ssh\KEYNAME.pub` in Command Prompt. Replace `USERNAME` with your Windows username and `KEYNAME` with the actual name of your key file.
 2. Select and copy the entire output, which is your public key.
 3. Connect to the cluster using `ssh YOUR-CNET-ID@randi.cri.uchicago.edu` and enter your CNET password.
-4. Run `echo "PASTE-YOUR-PUBLIC-KEY-CONTENT-HERE" >> ~/.ssh/authorized_keys` to add your public key to the `authorized_keys` file on the cluster. Replace `PASTE-YOUR-PUBLIC-KEY-CONTENT-HERE` with the public key you copied earlier.
+4. Run `echo "PASTE-YOUR-PUBLIC-KEY-CONTENT-HERE" >> ~/.ssh/authorized_keys` to add your public key to the `authorized_keys` file on the cluster. Replace `PASTE-YOUR-PUBLIC-KEY-CONTENT-HERE` with the content of the public key file you copied earlier.
 5. Type `exit` to log out from the cluster.
 6. Test the setup by running `ssh YOUR-CNET-ID@randi.cri.uchicago.edu`. You should now connect without entering a password.
 
