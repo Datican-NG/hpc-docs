@@ -162,7 +162,7 @@ VSCode is a code editor with useful extensions. `Remote - SSH` allows you to ope
 VSCode will automatically run Jupyter notebooks for you when you open them for editing. If you are doing any heavy computation in a Jupyter notebook, connect your entire VSCode session to a compute node as follows.
 
 1. In a terminal (Mac/Linux) or Command Prompt (Windows), `ssh randi` to connect to the cluster login node. 
-2. Request a compute node, e.g. `srun -p gpuq -t 640:00 --cpus-per-task 4 --pty /bin/bash`. Your prompt will change to `USERNAME@hostname` upon success.
+2. Request a compute node, e.g. `srun -p gpuq --gres=gpu:1 -t 640:00 --cpus-per-task 4 --pty /bin/bash`. Your prompt will change to `USERNAME@hostname` upon success.
 3. Click the green box in the lower left corner of VSCode. This opens the command palette. Select `Connect to Host`. Enter `HOSTNAME`, replacing `HOSTNAME` from step 2.
 
 VSCode is now connected to the compute node. Open your repository folder to use `randi` compute power with VSCode features.
