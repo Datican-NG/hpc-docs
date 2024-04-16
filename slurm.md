@@ -21,7 +21,7 @@
   - [Part IV: Set up VSCode](#part-iv-set-up-vscode)
     - [Step 1: Prerequisites](#step-1-prerequisites)
     - [Step 2: Connect to the login node with VSCode](#step-2-connect-to-the-login-node-with-vscode)
-    - [Step 3: Connect to a compute node with VSCode (only necessary for running Jupyter notebooks)](#step-3-connect-to-a-compute-node-with-vscode-only-necessary-for-running-jupyter-notebooks)
+    - [Step 3: Connect to a compute node with VSCode (for running Jupyter notebooks)](#step-3-connect-to-a-compute-node-with-vscode-for-running-jupyter-notebooks)
   - [Part V: Enable SSH keys for GitHub (optional, but strongly recommended)](#part-v-enable-ssh-keys-for-github-optional-but-strongly-recommended)
     - [Step 1:](#step-1)
     - [Step 2:](#step-2)
@@ -178,14 +178,23 @@ VSCode is a code editor with useful extensions. `Remote - SSH` allows you to ope
 1. Click the green box in the lower left corner of VSCode. This opens the command palette. Select `Connect to Host`. Select `randi`.
 2. Once connected, you can open your project folder and use VSCode normally. The bottom-left corner green box will show `SSH: randi` to indicate you are connected.
 
-### Step 3: Connect to a compute node with VSCode (only necessary for running Jupyter notebooks)
-VSCode will automatically run Jupyter notebooks for you when you open them for editing. If you are doing any heavy computation in a Jupyter notebook, connect your entire VSCode session to a compute node as follows.
+### Step 3: Connect to a compute node with VSCode (for running Jupyter notebooks)
 
-1. In a terminal (Mac/Linux) or Command Prompt (Windows), `ssh randi` to connect to the cluster login node. 
-2. Request a compute node, e.g. `srun -p gpuq --gres=gpu:1 -t 640:00 --cpus-per-task 4 --pty /bin/bash`. Your prompt will change to `USERNAME@hostname` upon success.
-3. Click the green box in the lower left corner of VSCode. This opens the command palette. Select `Connect to Host`. Enter `HOSTNAME`, replacing `HOSTNAME` from step 2.
+If you're running Jupyter notebooks that require heavy computation or deep learning with a GPU, you'll need to connect your VSCode session to a compute node before running the notebook. Follow these steps (assuming you're already connected to `randi`):
 
-VSCode is now connected to the compute node. Open your repository folder to use `randi` compute power with VSCode features.
+1. Clone this repository in your home directory (this only needs to be done the first time):
+```bash
+cd ~
+git clone git@github.com:Datican-NG/hpc-docs.git
+``` 
+2. Request a compute node by executing `sbatch ~/hpc-docs/notebook.sh` in the VSCode terminal. This script requests a node and runs a long sleep command to hold onto it for the maximum allowable time.
+
+3. Verify the assigned compute node by running `squeue -p gpuq` and noting the node name.
+
+4. Open the command palette (green box in the lower left corner) and select `Connect to Host`. Enter the compute node name from step 2.
+
+Now, VSCode is connected to the compute node, and you can open your repository folder to use `randi`'s compute power with VSCode features. When you are done with the compute node, please release it so others can use it with `scancel JOBID` where you can see your job id with `squeue -p gpuq`.
+
 
 ## Part V: Enable SSH keys for GitHub (optional, but strongly recommended)
 ### Step 1:
